@@ -1,0 +1,43 @@
+version: '2'
+services:
+  mongodb:
+    image: docker.io/bitnami/mongodb:5.0
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MONGODB_USERNAME=tivali
+      - MONGODB_DATABASE=tivali
+      - MONGODB_PASSWORD=miaouron
+  parse:
+    image: docker.io/bitnami/parse:5
+    ports:
+      - '1337:1337'
+    volumes:
+      - 'parse_data:/bitnami/parse'
+    depends_on:
+      - mongodb
+    environment:
+      - PARSE_DATABASE_HOST=mongodb
+      - PARSE_DATABASE_PORT_NUMBER=27017
+      - PARSE_DATABASE_USER=tivali
+      - PARSE_DATABASE_NAME=tivali
+      - PARSE_DATABASE_PASSWORD=miaouron
+      - PARSE_MASTER_KEY=MiaouRonLePtitChaton
+      - PARSE_APP_NAME=Tivali
+      - PARSE_APP_ID=tivali
+  dashboard:
+    image: docker.io/parseplatform/parse-dashboard
+    command: 'parse-dashboard --dev'
+    ports:
+      - '4040:4040'
+    environment:
+      - PARSE_DASHBOARD_SERVER_URL=http://localhost:1337/parse
+      - PARSE_DASHBOARD_MASTER_KEY=MiaouRonLePtitChaton
+      - PARSE_DASHBOARD_APP_ID=tivali
+      - PARSE_DASHBOARD_APP_NAME=Tivali
+volumes:
+  mongodb_data:
+    driver: local
+  parse_data:
+    driver: local
