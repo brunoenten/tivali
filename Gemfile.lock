@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/brunoenten/parse-stack.git
-  revision: 302900ed817b6bff0b7c3d99c727050ee0be930c
+  revision: 51fd8971eccfe3526abd1191d12110a5a2d29ff9
   branch: feature/1.10.0
   specs:
     parse-stack (1.10.0)
@@ -339,4 +339,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.7
+   2.3.19
