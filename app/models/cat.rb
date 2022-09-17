@@ -8,4 +8,22 @@ class Cat < Parse::Object
   property :base_location, :geopoint
   property :date_of_birth, :date
   property :date_of_death, :date
+
+  def set_picture_from_io(picture_io)
+    file_extension = File.extname(picture_io.original_filename)
+    parse_file = Parse::File.new("main_picture#{file_extension}", picture_io.read)
+    parse_file.mime_type = picture_io.content_type
+    parse_file.save
+    self.main_picture = parse_file
+  end
+
+  def longitude
+  end
+
+  def latitude
+  end
+
+  def set_base_location(_latitude, _longitude)
+    self.base_location = Parse::GeoPoint.new(_latitude, _longitude)
+  end
 end

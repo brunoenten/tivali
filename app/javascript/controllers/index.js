@@ -20,3 +20,7 @@ application.register('tabs', Tabs)
 application.register('popover', Popover)
 application.register('toggle', Toggle)
 application.register('slideover', Slideover)
+
+// Import and register google places autocomplete
+import PlacesAutocomplete from 'stimulus-places-autocomplete'
+application.register('places', PlacesAutocomplete)

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/brunoenten/parse-stack.git
-  revision: 51fd8971eccfe3526abd1191d12110a5a2d29ff9
+  revision: 0e601845545a83654fd1d373c63ab95ffa067ffa
   branch: feature/1.10.0
   specs:
     parse-stack (1.10.0)
@@ -123,8 +123,8 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erb-formatter (0.3.0)
-    erubi (1.10.0)
-    faraday (1.10.0)
+    erubi (1.11.0)
+    faraday (1.10.2)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -168,7 +168,7 @@ GEM
       reline (>= 0.3.0)
     jsonapi-renderer (0.2.2)
     jwt (2.4.1)
-    loofah (2.18.0)
+    loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -177,7 +177,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    minitest (5.16.2)
+    minitest (5.16.3)
     moneta (1.5.1)
     msgpack (1.5.3)
     multi_json (1.15.0)
@@ -198,7 +198,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.7-x86_64-linux)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.10)
       faraday (>= 0.17.3, < 3.0)
@@ -293,7 +293,7 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     view_component (2.59.0)
       activesupport (>= 5.0.0, < 8.0)
