@@ -1,3 +1,12 @@
+<script>
+  window.initMap = function () {
+    const event = new Event('google-maps-callback', {
+      bubbles: true,
+      cancelable: true,
+    })
+    window.dispatchEvent(event)
+  }
+</script>
 <!-- Page header -->
 <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
   <div class="flex items-center space-x-5">
@@ -9,7 +18,7 @@
     </div>
     <div>
       <h1 class="text-2xl font-bold text-gray-900"><%= @cat.main_name %></h1>
-      <p class="text-sm font-medium text-gray-500">Last seen  on <time datetime="2020-08-25">August 25, 2020</time></p>
+      <p class="text-sm font-medium text-gray-500">Last seen on <time datetime="2020-08-25">August 25, 2020</time></p>
     </div>
   </div>
   <div class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
@@ -21,10 +30,10 @@
 <div class="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
   <div class="space-y-6 lg:col-span-2 lg:col-start-1">
     <!-- Description list-->
-    <section aria-labelledby="applicant-information-title">
+    <section aria-labelledby="cat-information-title">
       <div class="bg-white shadow sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
-          <h2 id="applicant-information-title" class="text-lg font-medium leading-6 text-gray-900">General Information</h2>
+          <h2 id="cat-information-title" class="text-lg font-medium leading-6 text-gray-900">General Information</h2>
           <p class="mt-1 max-w-2xl text-sm text-gray-500">Identity and location</p>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
@@ -88,6 +97,20 @@
         </div>
       </div>
     </section>
+
+    <!-- Location-->
+    <section aria-labelledby="cat-location-title">
+      <%= content_tag :div, nil, class: 'bg-white shadow sm:rounded-lg', data: { controller: 'maps', action: 'google-maps-callback@window->maps#initializeMap', 'maps-latitude-value': @cat.latitude, 'maps-longitude-value': @cat.longitude} do %>
+        <div class="px-4 py-5 sm:px-6">
+          <h2 id="cat-location-title" class="text-lg font-medium leading-6 text-gray-900">Location</h2>
+          <p class="mt-1 max-w-2xl text-sm text-gray-500">Whereabouts</p>
+        </div>
+        <%= content_tag :div, nil, data: { 'maps-target': 'map', 'maps-latitude-value': @cat.latitude, 'maps-longitude-value': @cat.longitude }, class: 'map w-full min-h-[50vh] border-t border-gray-200 px-4 py-5 sm:px-6' %>
+        <div class="block bg-gray-50 px-4 py-4 sm:rounded-b-lg"></div>
+      <% end %>
+    </section>
+
+
 
     <!-- Comments-->
     <section aria-labelledby="notes-title">
